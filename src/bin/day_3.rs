@@ -40,8 +40,8 @@ impl FromStr for Map {
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         let trees: Vec<Vec<bool>> = s
-            .split("\n")
-            .filter(|s| s.len() > 0)
+            .split('\n')
+            .filter(|s| !s.is_empty())
             .map(|s| s.chars().map(|c| c == '#').collect())
             .collect();
         let width = trees[0].len();

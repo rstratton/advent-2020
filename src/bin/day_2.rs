@@ -30,8 +30,8 @@ impl FromStr for PasswordEntry {
     type Err = std::num::ParseIntError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        let components: Vec<&str> = s.split(" ").collect();
-        let a_b: Vec<&str> = components[0].split("-").collect();
+        let components: Vec<&str> = s.split(' ').collect();
+        let a_b: Vec<&str> = components[0].split('-').collect();
         let a = a_b[0].parse().unwrap();
         let b = a_b[1].parse().unwrap();
         let character = components[1].trim_matches(':').chars().next().unwrap();
@@ -49,8 +49,8 @@ fn main() {
     let contents = fs::read_to_string("data/day_2.txt").expect("File must be present");
 
     let passwords: Vec<PasswordEntry> = contents
-        .split("\n")
-        .filter_map(|s| if s.len() > 0 { s.parse().ok() } else { None })
+        .split('\n')
+        .filter_map(|s| if !s.is_empty() { s.parse().ok() } else { None })
         .collect();
 
     let valid_passwords_count_1 = passwords.iter().filter(|p| p.is_valid_1()).count();

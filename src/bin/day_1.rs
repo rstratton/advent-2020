@@ -4,7 +4,7 @@ fn main() {
     let contents = fs::read_to_string("data/day_1.txt").expect("File must be present");
 
     let expenses: Vec<i32> = contents
-        .split("\n")
+        .split('\n')
         .filter_map(|s| s.parse().ok())
         .collect();
 
@@ -12,7 +12,7 @@ fn main() {
     println!("{}", part2(&expenses).unwrap());
 }
 
-fn part1(expenses: &Vec<i32>) -> Option<i32> {
+fn part1(expenses: &[i32]) -> Option<i32> {
     for i in 0..expenses.len() {
         for j in (i + 1)..expenses.len() {
             if expenses[i] + expenses[j] == 2020 {
@@ -23,7 +23,7 @@ fn part1(expenses: &Vec<i32>) -> Option<i32> {
     None
 }
 
-fn part2(expenses: &Vec<i32>) -> Option<i32> {
+fn part2(expenses: &[i32]) -> Option<i32> {
     for i in 0..expenses.len() {
         for j in (i + 2)..expenses.len() {
             for k in (i + 1)..j {

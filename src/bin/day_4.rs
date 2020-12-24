@@ -117,9 +117,7 @@ impl Passport {
     fn hcl_is_valid(&self) -> bool {
         match &self.hcl {
             Some(hcl) => {
-                if hcl.len() != 7 {
-                    false
-                } else if hcl.chars().nth(0).unwrap() != '#' {
+                if hcl.len() != 7 || !hcl.starts_with('#') {
                     false
                 } else {
                     let legal_chars: HashSet<char> = [

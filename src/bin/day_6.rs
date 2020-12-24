@@ -8,8 +8,8 @@ fn main() {
 
 fn part1() {
     let contents = fs::read_to_string("data/day_6.txt").expect("File must be present");
-    let group_strings = contents.split("\n\n").filter(|s| s.len() > 0);
-    let groups = group_strings.map(|s| s.split("\n"));
+    let group_strings = contents.split("\n\n").filter(|s| !s.is_empty());
+    let groups = group_strings.map(|s| s.split('\n'));
     let answers_sets = groups.map(|group| {
         let mut answers_set = HashSet::new();
         for answers in group {
@@ -25,8 +25,8 @@ fn part1() {
 
 fn part2() {
     let contents = fs::read_to_string("data/day_6.txt").expect("File must be present");
-    let group_strings = contents.split("\n\n").filter(|s| s.len() > 0);
-    let groups = group_strings.map(|s| s.split("\n").filter(|s| s.len() > 0));
+    let group_strings = contents.split("\n\n").filter(|s| !s.is_empty());
+    let groups = group_strings.map(|s| s.split('\n').filter(|s| !s.is_empty()));
     let answers_sets = groups.map(|group| {
         let mut all_answers_set: Option<HashSet<char>> = None;
         for answers in group {
