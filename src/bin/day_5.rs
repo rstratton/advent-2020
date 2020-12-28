@@ -46,7 +46,7 @@ fn main() {
 
     let mut previous_seat_id: Option<usize> = None;
     let mut seat_ids: Vec<usize> = seats.map(|s| s.id()).collect();
-    seat_ids.sort();
+    seat_ids.sort_unstable();
     for seat_id in seat_ids {
         if let Some(previous_seat_id) = previous_seat_id {
             if seat_id - previous_seat_id > 1 {
